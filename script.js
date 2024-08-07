@@ -37,7 +37,8 @@
 
 console.log("Hello Amit");
 console.log("My Branch");
-
 console.log("Hello Yaniv");
+console.log("Everything is working"); //Yaniv commit
+
 
 //first commit of "Amit" branch
