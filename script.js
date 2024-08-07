@@ -1,5 +1,16 @@
-const table1 = document.getElementById('table1');
+const _name = document.getElementById('name');
+const _img = document.getElementById("img");
+const _hp = document.getElementById('hp');
+const _def = document.getElementById('defense');
+const _atk = document.getElementById('attack');
 
+function updateStats(name, imgSrc, stats){
+    _name.textContent = name;
+    _img.src = imgSrc;
+    _hp.textContent = `HP:${stats[0].base_stat}`;
+    _def.textContent = `DEFENSE:${stats[2].base_stat}`;
+    _atk.textContent = `ATTACK:${stats[1].base_stat}`;
+}
 
 function fetchData(){
     const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
@@ -12,12 +23,9 @@ function fetchData(){
             return response.json();
         })
         .then(data => {
-            console.log(data)
-            const pokemonSprite = data.sprites.front_default;
-            const imgElement = document.getElementById("pokemonSprite");
-            
-            imgElement.src = pokemonSprite;
-            imgElement.style.display = "block";
+            console.log(data);
+
+            updateStats(data.name, data.sprites.front_default, data.stats);
         })
         .catch(error => console.log(error));
 }
