@@ -9,16 +9,18 @@
 
     <input type="text" id="pokemonName" placeholder="Enter Pokemon Name">
     <button onclick="fetchData()">Fetch Pokemon</button>
-
+<div id="mainDiv">
     <div id="card"> 
         <h2 id="name">placeholder</h2>
         <img src="" alt="Pokemon Sprite" id="img"> <br>
-        <img onclick="turnAround()" src="./assets/turnAroundButton.png" alt="turn around button" id="img">
-        <p id="hp">hp: placeholder</p>
-        <p id="defense">defense: placeholder</p>
-        <p id="attack">attack: placeholder</p>
+        <img onclick="turnAround()" src="./assets/turnAroundButton.png" alt="turn around button" id="turnAround">
+        <div id="stats">
+            <p id="hp">hp: placeholder</p>
+            <p id="defense">defense: placeholder</p>
+            <p id="attack">attack: placeholder</p>
+        </div>
     </div>
-        
+</div>
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
 </body>

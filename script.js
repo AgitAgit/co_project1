@@ -4,7 +4,10 @@ const _img = document.getElementById("img");
 const _hp = document.getElementById('hp');
 const _def = document.getElementById('defense');
 const _atk = document.getElementById('attack');
+const _input = document.getElementById("pokemonName");
 let _data;
+
+_input.value = 'pikachu';
 
 _card.style.visibility = 'hidden';
 
@@ -26,7 +29,6 @@ function turnAround(){
 
 function fetchData(){
     const pokemonName = document.getElementById("pokemonName").value.trim().toLowerCase();   
-    if(!pokemonName) return;
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(response => {
             if(!response.ok){
@@ -41,4 +43,6 @@ function fetchData(){
             if(data) updateStats();
         })
         .catch(error => console.log(error));
+
+    _input.value = '';
 }

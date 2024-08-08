@@ -1,9 +1,28 @@
+:root{
+    --background: hsl(179, 100%, 80%);
+    --card: hsl(50, 78%, 44%);
+}
 
-#table1{
-    th{
-        border: 2px solid black;
-    }
-    td{
-        border: 1px solid black;
+body {
+    background-color: var(--background);
+    #mainDiv {
+        #card {
+            background-color: var(--card);
+            margin:auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 20%;
+            aspect-ratio: 9/16;
+            border: 1px solid black;
+            border-radius: 10px;
+            #img {
+                width: 80%;
+            }
+
+            #turnAround {
+                width: 10%;
+            }
+        }
     }
 }
