@@ -5,7 +5,14 @@ const _hp = document.getElementById('hp');
 const _def = document.getElementById('defense');
 const _atk = document.getElementById('attack');
 const _input = document.getElementById("pokemonName");
+const _searchButton = document.getElementById("searchButton");
+const _pokemonArray = [ ] // try to create array holding pokemon buttons and use for-each to assign events listeners
+const _pokemonButton = document.getElementById("pokemonButton");
 let _data;
+
+_searchButton.addEventListener("click",onSearchButtonClick); 
+_pokemonButton.addEventListener("click",onDirectButtonClick); 
+
 
 _input.value = 'pikachu';
 
@@ -27,8 +34,9 @@ function turnAround(){
         _img.src = _data.sprites.front_default;
 }
 
-function fetchData(){
-    const pokemonName = document.getElementById("pokemonName").value.trim().toLowerCase();   
+function fetchData(pokemonName){
+    if(!pokemonName) return;
+    pokemonName = pokemonName.toLowerCase();
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(response => {
             if(!response.ok){
@@ -40,9 +48,18 @@ function fetchData(){
         .then(data => {
             console.log(data);
             _data = data;
-            if(data) updateStats();
+            updateStats();
         })
         .catch(error => console.log(error));
 
     _input.value = '';
+}
+function onDirectButtonClick(e){
+    console.log(e.target.textContent);
+    
+    fetchData(e.target.textContent)
+}
+
+function onSearchButtonClick(){
+    fetchData(_input.value)
 }
