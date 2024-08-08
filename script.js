@@ -25,7 +25,8 @@ function turnAround(){
 }
 
 function fetchData(){
-    const pokemonName = document.getElementById("pokemonName").value.trim().toLowerCase();
+    const pokemonName = document.getElementById("pokemonName").value.trim().toLowerCase();   
+    if(!pokemonName) return;
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
         .then(response => {
             if(!response.ok){
@@ -37,7 +38,7 @@ function fetchData(){
         .then(data => {
             console.log(data);
             _data = data;
-            updateStats();
+            if(data) updateStats();
         })
         .catch(error => console.log(error));
 }
